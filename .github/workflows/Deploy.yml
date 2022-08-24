@@ -6,8 +6,8 @@ on:
       - main
 env:
   AWS_REGION: ap-northeast-2
-  ECR_REGISTRY: 331485284130.dkr.ecr.ap-northeast-2.amazonaws.com/nestjs-repository
-  ECR_REPOSITORY: nestjs-repository
+  ECR_REGISTRY: 331485284130.dkr.ecr.ap-northeast-2.amazonaws.com/repository-nestjs
+  ECR_REPOSITORY: repository-nestjs
   IMAGE_TAG: latest
 jobs:
   deploy:
