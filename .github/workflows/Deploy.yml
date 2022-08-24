@@ -8,8 +8,6 @@ env:
   AWS_REGION: ap-northeast-2
   ECR_REGISTRY: 331485284130.dkr.ecr.ap-northeast-2.amazonaws.com/repository-nestjs
   ECR_REPOSITORY: repository-nestjs
-  ECS_SERVICE: service-nestjs
-  ECS_CLUSTER: cluster-nestjs
 
 jobs:
   deploy:
@@ -54,6 +52,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: $ECS_SERVICE
-          cluster: $ECS_CLUSTER
+          service: service-nestjs
+          cluster: cluster-nestjs
           wait-for-service-stability: false
