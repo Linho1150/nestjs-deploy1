@@ -10,7 +10,7 @@ env:
   APPLICATION_NAME: webApp
   ENVIRONMENT_NAME: Webapp-env
   AWS_REGION: ap-northeast-2
-  IMAGE_TAG: ${{ github.sha }}
+  GIT_SHA: ${{ github.sha }}
 
 jobs:
   deploy-prod:
@@ -39,7 +39,8 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
+          GIT_SHA: ${{ env.GIT_SHA }}
+          IMAGE_TAG: latest
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
